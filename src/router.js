@@ -18,7 +18,6 @@ const router = (
       <IndexRoute component={Login}/>
       <Route path="/camera" component={Camera}/>
       <Route path="/calendar" component={CalendarInfo}/>
-      <Route path="/calendar" component={CalendarInfo}/>
       <Route path="/success" component={Success}/>
       <Route path="/fail" component={Fail}/>
 
