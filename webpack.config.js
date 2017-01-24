@@ -10,7 +10,6 @@ module.exports = {
   app_root: app_root, // the app root folder, needed by the other webpack configs
   entry: [
     // http://gaearon.github.io/react-hot-loader/getstarted/
-    'webpack-dev-server/client?http://localhost:8080',
 
     'webpack/hot/only-dev-server',
     'babel-polyfill',
@@ -57,10 +56,6 @@ module.exports = {
   },
   plugins: [
 
-    new BrowserSyncPlugin({
-      host: 'localhost',
-      port: 3000,
-      proxy: 'http://localhost:8080/'
-    })
+
   ],
 };
