@@ -19,8 +19,7 @@
     "start": "concurrently \"webpack --watch --config webpack.dev.config.js\" \"node server.js\"",
     "start-prod": "concurrently \"webpack --watch --config webpack.prod.config.js\" \"node server.js\"",
     "test": "mocha --recursive --compilers js:babel-register --require babel-polyfill --require ignore-styles",
-    "test-watch": "npm test -- --watch",
-    "heroku-postbuild": "concurrently \"webpack --watch --config webpack.prod.config.js\" \"node server.js\""
+    "test-watch": "npm test -- --watch"
   },
   "babel": {
     "presets": [
