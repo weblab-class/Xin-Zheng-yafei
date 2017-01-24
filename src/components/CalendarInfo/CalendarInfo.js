@@ -356,7 +356,7 @@ class CalendarInfo extends React.Component {
 
 
     const wordByLine = [];
-    for (let region of this.state.raw.ocr.regions){
+    for (let region of this.props.ocr.ocr.regions){
       for (let line of region.lines){
         let lineText= "";
         for (let word of line.words){
