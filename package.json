@@ -1,7 +1,7 @@
 {
-  "name": "redux-minimal",
+  "name": "posterCal",
   "version": "1.0.0",
-  "description": "",
+  "description": "posterCal",
   "keywords": [
     "react",
     "redux",
@@ -20,6 +20,8 @@
     "start-prod": "concurrently \"webpack --watch --config webpack.prod.config.js\" \"node server.js\"",
     "test": "mocha --recursive --compilers js:babel-register --require babel-polyfill --require ignore-styles",
     "test-watch": "npm test -- --watch"
+    "heroku-postbuild": "concurrently \"webpack --watch --config webpack.prod.config.js\" \"node server.js\""
+
   },
   "babel": {
     "presets": [
@@ -28,7 +30,7 @@
       "stage-3"
     ]
   },
-  "author": "Catalin Luntraru",
+  "author": "Xin Zheng",
   "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
