@@ -16,8 +16,16 @@ class Login extends React.Component {
 
   }
 
-  handleSignInClick() {
+
+
+  componentWillMount(){
     gapi.load('client:auth2', this.initClient);
+
+  }
+
+  handleSignInClick() {
+    gapi.auth2.getAuthInstance().signIn();
+
   }
 
 
@@ -31,7 +39,7 @@ class Login extends React.Component {
       scope: 'https://www.googleapis.com/auth/calendar'
     }).then( () => {
       // Listen for sign-in state changes.
-
+      console.log("init");
       gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);
 
       // Handle the initial sign-in state.
@@ -55,9 +63,12 @@ class Login extends React.Component {
     // When signin status changes, this function is called.
     // If the signin status is changed to signedIn, we make an API call.
     if (isSignedIn) {
+      console.log("signedIN");
       this.props.router.push('/camera')
       this.makeApiCall();
     }
+
+
   }
 
 
