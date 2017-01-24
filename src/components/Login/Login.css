@@ -73,7 +73,6 @@ form > * {
 .head {
   /*background-color: purple;*/
   height: 30%;
-  background-image: url("./img/posterWall-2.jpg");
   background-size: 60% 100%;
   background-repeat: repeat-x;
   /*transform: rotate(90deg);*/
