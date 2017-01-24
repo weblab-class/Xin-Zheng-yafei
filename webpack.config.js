@@ -3,16 +3,10 @@
 var app_root = 'src'; // the app root folder: src, src_users, etc
 var path = require('path');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
-
 
 module.exports = {
   app_root: app_root, // the app root folder, needed by the other webpack configs
   entry: [
-    // http://gaearon.github.io/react-hot-loader/getstarted/
-    'webpack-dev-server/client?http://localhost:8080',
-
-    'webpack/hot/only-dev-server',
     'babel-polyfill',
     __dirname + '/' + app_root + '/index.js',
   ],
@@ -45,22 +39,16 @@ module.exports = {
         ]
       },
     ],
+
   },
   devServer: {
     contentBase: __dirname + '/public',
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Credentials": "true",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization, x-id, Content-Length, X-Requested-With",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS"
-    },
   },
   plugins: [
-
-    new BrowserSyncPlugin({
-      host: 'localhost',
-      port: 3000,
-      proxy: 'http://localhost:8080/'
-    })
+    new CleanWebpackPlugin(['css/main.css', 'js/bundle.js'], {
+      root: __dirname + '/public',
+      verbose: true,
+      dry: false, // true for simulation
+    }),
   ],
 };

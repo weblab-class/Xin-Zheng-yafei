@@ -1,7 +1,7 @@
 {
   "name": "redux-minimal",
   "version": "1.0.0",
-  "description": "Start building complex react-redux apps today, with this minimalist easy to understand starter kit (boilerplate)",
+  "description": "",
   "keywords": [
     "react",
     "redux",
@@ -10,15 +10,14 @@
     "boilerplate"
   ],
   "main": "index.js",
-  "homepage": "http://redux-minimal.js.org/",
+  "homepage": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/catalin-luntraru/redux-minimal"
+    "url": ""
   },
   "scripts": {
-    "start": "webpack-dev-server --inline --hot --history-api-fallback --host localhost --port 8080",
-    "build-dev": "webpack --config webpack.dev.config.js",
-    "build-prod": "webpack -p --config webpack.prod.config.js",
+    "start": "concurrently \"webpack --watch --config webpack.dev.config.js\" \"node server.js\"",
+    "start-prod": "concurrently \"webpack --watch --config webpack.prod.config.js\" \"node server.js\"",
     "test": "mocha --recursive --compilers js:babel-register --require babel-polyfill --require ignore-styles",
     "test-watch": "npm test -- --watch"
   },
@@ -32,6 +31,7 @@
   "author": "Catalin Luntraru",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.14.0",
     "alchemy-api": "^1.3.3",
     "classnames": "^2.2.5",
     "react": "^15.4.2",
@@ -57,23 +57,20 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-3": "^6.17.0",
     "babel-runtime": "^6.20.0",
-    "browser-sync": "^2.18.6",
-    "browser-sync-webpack-plugin": "^1.1.3",
     "clean-webpack-plugin": "^0.1.15",
+    "concurrently": "^3.1.0",
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "ignore-styles": "^5.0.1",
-    "image-webpack-loader": "^3.1.0",
     "mocha": "^3.2.0",
     "node-sass": "^4.3.0",
+    "parallelshell": "^2.0.0",
     "react-addons-test-utils": "^15.4.2",
-    "react-hot-loader": "^1.3.1",
     "redux-freeze": "^0.1.5",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2",
     "whatwg-fetch": "^2.0.1"
   }
 }
