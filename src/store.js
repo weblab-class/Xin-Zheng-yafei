@@ -29,8 +29,6 @@ if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
   middleware = compose(middleware, window.devToolsExtension());
 }
 
-
-
 // create the store
 const store = createStore(reducers, middleware);
 const history = syncHistoryWithStore(browserHistory, store);
