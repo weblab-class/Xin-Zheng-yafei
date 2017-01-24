@@ -11,9 +11,9 @@
  * action creators
  */
 
-export function ocr(res) {
+export function receiveOCR(res) {
   return {
-    type: "OCR",
+    type: "receiveOCR",
     res
   }
 }

@@ -17,6 +17,7 @@ class Camera extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      wait: false,
       uploadedFileCloudinaryUrl: ''
     };
     this.handleImageUpload = this.handleImageUpload.bind(this)
@@ -25,7 +26,8 @@ class Camera extends React.Component {
 
   onImageDrop(files) {
     this.setState({
-      uploadedFile: files[0]
+      uploadedFile: files[0],
+      wait: true,
     });
 
     this.handleImageUpload(files[0]);
@@ -65,8 +67,9 @@ class Camera extends React.Component {
           console.error(err);
         }
 
-        this.props.ocr(response);
+        this.props.receiveOCR(response.text);
         console.log(response);
+        this.props.router.push('/calendar');
         });
 
 
@@ -76,30 +79,31 @@ class Camera extends React.Component {
 
 
   render() {
+
     return (
-      <div className="container">
-        <Dropzone
-          multiple={false}
-          accept="image/*"
-          onDrop={this.onImageDrop.bind(this)}>
-          <p>Drop an image or click to select a file to upload.</p>
-        </Dropzone>
 
-        <div>
-          <div className="FileUpload">
-            ...
-          </div>
 
-          <div>
-            {this.state.uploadedFileCloudinaryUrl === '' ? null :
-              <div>
-                <p>{this.state.uploadedFile.name}</p>
-                <p>{this.state.uploadedFileCloudinaryUrl}</p>
-                <img src={this.state.uploadedFileCloudinaryUrl}/>
-              </div>}
-          </div>
+
+      <div className={s.appWrap}>
+        <div className={s.text}>
+          <h1>Click to shot or upload a poster</h1>
+        </div>
+        <div className={s.camera}>
+
+          <Dropzone
+            multiple={false}
+            accept="image/*"
+            onDrop={this.onImageDrop.bind(this)}>
+            <b style={{fontSize: 18}}>click to select a poster to upload.</b>
+          </Dropzone>
+
+          { this.state.wait ? <p className={s.blink} >
+            waiting....
+          </p> : null }
+
         </div>
       </div>
+
     );
   }
 }

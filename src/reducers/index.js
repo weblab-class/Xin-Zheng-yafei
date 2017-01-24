@@ -5,13 +5,11 @@ import { reducer as formReducer } from "redux-form";
 
 function ocr(state = [], action) {
   switch (action.type) {
-    case 'OCR':
-      return [
+    case 'receiveOCR':
+      return {
         ...state,
-        {
-          ocr: action.res,
-        }
-      ]
+        "ocr": JSON.parse(action.res)
+      }
     default:
       return state
   }
