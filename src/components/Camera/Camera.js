@@ -68,6 +68,7 @@ class Camera extends React.Component {
         }
 
         this.props.receiveOCR(response.text);
+        this.props.receiveURL(this.state.uploadedFileCloudinaryUrl)
         console.log(response);
         this.props.router.push('/calendar');
         });

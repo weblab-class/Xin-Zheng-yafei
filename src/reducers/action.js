@@ -17,3 +17,12 @@ export function receiveOCR(res) {
     res
   }
 }
+
+
+
+export function receiveURL(res) {
+  return {
+    type: "receiveURL",
+    res
+  }
+}

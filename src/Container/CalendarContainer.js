@@ -9,8 +9,6 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../reducers/action';
 import Calendar from '../components/CalendarInfo/CalendarInfo';
 
-
-
 function mapStateToProps(state) {
   return {
     ocr: state.ocr,
