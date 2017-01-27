@@ -1,8 +1,8 @@
 import React from "react";
 import s from "./CalendarInfo.css"
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
-import {sortLines,lineHeight,likeAddress} from "./MainFunction/Filter"
-import TextWrap from "./TextWrap"
+import {sortLines,lineHeight,likeAddress} from "./Filter/EventPlaceFilter"
+import {allURL} from "./Filter/URLFilter"
 
 
 const SortableItemAll = SortableElement(({indexNum, value, onClickAll,panel}) => <li className={s.textWrap}
@@ -561,6 +561,11 @@ class CalendarInfo extends React.Component {
 
     const lineByHeight = sortLines(this.state.ocr,lineHeight,"height");
     const lineByAddress = sortLines(this.state.ocr,likeAddress,"address");
+    const lineByURL = allURL(this.state.ocr);
+
+
+
+
 
     this.setState(
       {
@@ -569,6 +574,8 @@ class CalendarInfo extends React.Component {
         selectedTitle: lineByHeight.slice(0, 2),
         allPlace: lineByAddress.slice(1),
         selectedPlace: lineByAddress.slice(0, 1),
+        allURL: lineByURL.slice(1),
+        selectedURL: lineByURL.slice(0, 1),
       });
 
 
