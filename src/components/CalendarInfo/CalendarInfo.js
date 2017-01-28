@@ -1,18 +1,17 @@
 import React from "react";
 import s from "./CalendarInfo.css"
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
-import {sortLines,lineHeight,likeAddress} from "./Filter/EventPlaceFilter"
+import {sortLines, lineHeight, likeAddress} from "./Filter/EventPlaceFilter"
 import {allURL} from "./Filter/URLFilter"
 import Chrono from "chrono-node";
+import Datetime from 'react-datetime';
 
 
-console.log(Chrono.parseDate('An appointment on Sep 12-13') );
-
-
-const SortableItemAll = SortableElement(({indexNum, value, onClickAll,panel}) => <li className={s.textWrap}
-                                                                               onClick={()=>onClickAll(indexNum,panel)}>{value}</li>);
-const SortableItemSelected = SortableElement(({indexNum, value, onClickSelected,panel}) => <li className={s.textWrapClick}
-                                                                                         onClick={()=>onClickSelected(indexNum,panel)}>{value}</li>);
+const SortableItemAll = SortableElement(({indexNum, value, onClickAll, panel}) => <li className={s.textWrap}
+                                                                                      onClick={()=>onClickAll(indexNum, panel)}>{value}</li>);
+const SortableItemSelected = SortableElement(({indexNum, value, onClickSelected, panel}) => <li
+  className={s.textWrapClick}
+  onClick={()=>onClickSelected(indexNum, panel)}>{value}</li>);
 
 const SortableListSelected = SortableContainer(({panel, selected, onClickSelected}) => {
   return (
@@ -21,7 +20,7 @@ const SortableListSelected = SortableContainer(({panel, selected, onClickSelecte
       <ul>
         {selected.map((value, index) =>
           <SortableItemSelected key={`item-${index}`} value={value} index={index} collection="1"
-                                onClickSelected={onClickSelected} indexNum={index} panel={panel} />
+                                onClickSelected={onClickSelected} indexNum={index} panel={panel}/>
         )}
       </ul>
     </div>
@@ -42,6 +41,35 @@ const SortableListAll = SortableContainer(({panel, all, onClickAll}) => {
   );
 });
 
+
+
+const SortableListSelectedTime = SortableContainer(({panel, selected, onClickSelected}) => {
+  return (
+    <div>
+
+      <ul>
+        {selected.map((value, index) =>
+          <SortableItemSelected key={`item-${index}`} value={value.text} index={index} collection="1"
+                                onClickSelected={onClickSelected} indexNum={index} panel={panel}/>
+        )}
+      </ul>
+    </div>
+  );
+});
+
+
+const SortableListAllTime = SortableContainer(({panel, all, onClickAll}) => {
+  return (
+    <div>
+      <ul>
+        {all.map((value, index) =>
+          <SortableItemAll key={`item-${index}`} value={value.text} index={index} collection="0" onClickAll={onClickAll}
+                           indexNum={index} disabled={true} panel={panel}/>
+        )}
+      </ul>
+    </div>
+  );
+});
 
 
 // CalendarInfo page component
@@ -122,7 +150,7 @@ class CalendarInfo extends React.Component {
                 "words": [
                   {
                     "boundingBox": "77,1253,522,126",
-                    "text": "preparing"
+                    "text": "tomorrow"
                   },
                   {
                     "boundingBox": "637,1250,153,102",
@@ -226,7 +254,7 @@ class CalendarInfo extends React.Component {
                   },
                   {
                     "boundingBox": "526,1847,500,119",
-                    "text": "teaching,"
+                    "text": "Tuesday January 5 1:30 - 3:00pm",
                   },
                   {
                     "boundingBox": "1073,1852,454,91",
@@ -257,10 +285,6 @@ class CalendarInfo extends React.Component {
                   {
                     "boundingBox": "139,2321,670,167",
                     "text": "Tuesday"
-                  },
-                  {
-                    "boundingBox": "849,2318,19,167",
-                    "text": "I"
                   },
                   {
                     "boundingBox": "908,2317,635,163",
@@ -398,6 +422,7 @@ class CalendarInfo extends React.Component {
       selectedTime: [],
       selectedPlace: [],
       selectedURL: [],
+      wholeWord: "",
     };
 
     this.submit = this.submit.bind(this);
@@ -410,8 +435,6 @@ class CalendarInfo extends React.Component {
     this.onClickAll = this.onClickAll.bind(this);
     this.onClickSelected = this.onClickSelected.bind(this);
     this.changePanel = this.changePanel.bind(this);
-
-
 
 
   }
@@ -493,55 +516,53 @@ class CalendarInfo extends React.Component {
   }
 
 
-
   onSortEndAll({oldIndex, newIndex}) {
     this.setState({
-      ["all"+this.state.currentPanel]: arrayMove(this.state["all"+this.state.currentPanel], oldIndex, newIndex)
+      ["all" + this.state.currentPanel]: arrayMove(this.state["all" + this.state.currentPanel], oldIndex, newIndex)
     });
   };
 
   onSortEndSelected({oldIndex, newIndex}) {
     this.setState({
-      ["selected"+this.state.currentPanel]: arrayMove(this.state["selected"+this.state.currentPanel], oldIndex, newIndex)
+      ["selected" + this.state.currentPanel]: arrayMove(this.state["selected" + this.state.currentPanel], oldIndex, newIndex)
     });
   };
 
 
-
-  onClickAll(index,panel) {
-    console.log("clickall" + index+panel);
-    const tempAll = this.state["all"+panel];
-    const tempSelect = this.state["selected"+panel];
+  onClickAll(index, panel) {
+    console.log("clickall" + index + panel);
+    const tempAll = this.state["all" + panel];
+    const tempSelect = this.state["selected" + panel];
 
     tempSelect.push(tempAll[index]);
 
     tempAll.splice(index, 1);
     this.setState({
-      ["all"+panel]: tempAll,
-      ["selected"+panel]: tempSelect
+      ["all" + panel]: tempAll,
+      ["selected" + panel]: tempSelect
     });
 
   };
 
-  onClickSelected(index,panel) {
+  onClickSelected(index, panel) {
 
-    console.log("clickselect" + index+panel);
+    console.log("clickselect" + index + panel);
 
-    const tempAll = this.state["all"+panel];
-    const tempSelect = this.state["selected"+panel];
+    const tempAll = this.state["all" + panel];
+    const tempSelect = this.state["selected" + panel];
 
     tempAll.push(tempSelect[index]);
 
     tempSelect.splice(index, 1);
     this.setState({
-      ["all"+panel]: tempAll,
-      ["selected"+panel]: tempSelect
+      ["all" + panel]: tempAll,
+      ["selected" + panel]: tempSelect
     });
 
   };
 
 
-  changePanel(panel){
+  changePanel(panel) {
     this.setState(
       {
         currentPanel: panel,
@@ -551,24 +572,24 @@ class CalendarInfo extends React.Component {
 
 
   componentWillMount() {
+    let wholeWord = "";
     const wordByLine = [];
     for (let region of this.state.ocr.regions) {
       for (let line of region.lines) {
         let lineText = "";
         for (let word of line.words) {
-          lineText += word.text + ' '
+          lineText += word.text + ' ';
+          wholeWord += word.text + ' '
         }
         wordByLine.push(lineText)
       }
 
     }
 
-    const lineByHeight = sortLines(this.state.ocr,lineHeight,"height");
-    const lineByAddress = sortLines(this.state.ocr,likeAddress,"address");
+
+    const lineByHeight = sortLines(this.state.ocr, lineHeight, "height");
+    const lineByAddress = sortLines(this.state.ocr, likeAddress, "address");
     const lineByURL = allURL(this.state.ocr);
-
-
-
 
 
     this.setState(
@@ -580,14 +601,48 @@ class CalendarInfo extends React.Component {
         selectedPlace: lineByAddress.slice(0, 1),
         allURL: lineByURL.slice(1),
         selectedURL: lineByURL.slice(0, 1),
+        allTime: [...Chrono.parse(wholeWord)].slice(1),
+        selectedTime: [...Chrono.parse(wholeWord)].slice(0, 1),
+        wholeWord: wholeWord,
       });
 
 
   }
 
 
-
   render() {
+
+    let areaContent = null;
+    if (this.state.currentPanel !== "Time") {
+      areaContent =
+        <div>
+        <SortableListSelected panel={this.state.currentPanel}
+                              selected={this.state["selected" + this.state.currentPanel]}
+                              onSortEnd={this.onSortEndSelected}
+                              onClickSelected={this.onClickSelected} pressDelay={200}/>
+
+        <SortableListAll panel={this.state.currentPanel} all={this.state["all" + this.state.currentPanel]}
+                         onSortEnd={this.onSortEndAll}
+                         onClickAll={this.onClickAll} pressDelay={200}/>
+      </div>
+    }
+    else {
+      areaContent =
+        <div>
+          <p>Start Time</p>
+          <Datetime value={this.state.selectedTime[0] ? this.state.selectedTime[0].start.date() : null}/>
+          <p>End Time</p>
+          <Datetime value={this.state.selectedTime[0].end? this.state.selectedTime[0].end.date() : null }/>
+        <SortableListSelectedTime panel={this.state.currentPanel}
+                              selected={this.state.selectedTime}
+                              onSortEnd={this.onSortEndSelected}
+                              onClickSelected={this.onClickSelected} pressDelay={200} />
+
+        <SortableListAllTime panel={this.state.currentPanel} all={this.state.allTime}
+                         onSortEnd={this.onSortEndAll}
+                         onClickAll={this.onClickAll} />
+      </div>
+    }
 
 
     return (
@@ -596,26 +651,26 @@ class CalendarInfo extends React.Component {
         <div className={s.appWrap}>
 
           <div className={s.areaSubmit}>
+            <h1>event</h1>
             <button className={s.buttonSubmit} onClick={this.handleSubmit}><span>Submit </span></button>
+
           </div>
 
           <div className={s.areaContent}>
-            <SortableListSelected panel={this.state.currentPanel} selected={this.state["selected"+this.state.currentPanel]}
-                          onSortEnd={this.onSortEndSelected}
-                          onClickSelected={this.onClickSelected} pressDelay={200}/>
-
-            <SortableListAll panel={this.state.currentPanel} all={this.state["all"+this.state.currentPanel]}
-                                  onSortEnd={this.onSortEndAll}
-                                  onClickAll={this.onClickAll} pressDelay={200}/>
+            {areaContent}
           </div>
 
-
-
           <div className={s.areaOption}>
-            <button className={s.buttonCalOpt}><i className="fa fa-newspaper-o" onClick={() => this.changePanel("Title")}/>Event</button>
-            <button className={s.buttonCalOpt}><i className="fa fa-clock-o" onClick={() => this.changePanel("Time")}/>Time</button>
-            <button className={s.buttonCalOpt}><i className="fa fa-map-marker" onClick={() => this.changePanel("Place")}/>Place</button>
-            <button className={s.buttonCalOpt}><i className="fa fa-link" onClick={() => this.changePanel("URL")}/>URL</button>
+            <button className={s.buttonCalOpt}><i className="fa fa-newspaper-o"
+                                                  onClick={() => this.changePanel("Title")}/>Event
+            </button>
+            <button className={s.buttonCalOpt}><i className="fa fa-clock-o" onClick={() => this.changePanel("Time")}/>Time
+            </button>
+            <button className={s.buttonCalOpt}><i className="fa fa-map-marker"
+                                                  onClick={() => this.changePanel("Place")}/>Place
+            </button>
+            <button className={s.buttonCalOpt}><i className="fa fa-link" onClick={() => this.changePanel("URL")}/>URL
+            </button>
 
           </div>
         </div>
