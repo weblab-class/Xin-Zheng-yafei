@@ -3,6 +3,10 @@ import s from "./CalendarInfo.css"
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import {sortLines,lineHeight,likeAddress} from "./Filter/EventPlaceFilter"
 import {allURL} from "./Filter/URLFilter"
+import Chrono from "chrono-node";
+
+
+console.log(Chrono.parseDate('An appointment on Sep 12-13') );
 
 
 const SortableItemAll = SortableElement(({indexNum, value, onClickAll,panel}) => <li className={s.textWrap}
