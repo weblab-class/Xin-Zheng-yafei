@@ -423,6 +423,8 @@ class CalendarInfo extends React.Component {
       selectedPlace: [],
       selectedURL: [],
       wholeWord: "",
+      finalStartTime: null,
+      finalEndTime: null,
     };
 
     this.submit = this.submit.bind(this);
@@ -434,7 +436,11 @@ class CalendarInfo extends React.Component {
 
     this.onClickAll = this.onClickAll.bind(this);
     this.onClickSelected = this.onClickSelected.bind(this);
-    this.changePanel = this.changePanel.bind(this);
+    this.handleStartTimeChange = this.handleStartTimeChange.bind(this);
+    this.handleEndTimeChange = this.handleEndTimeChange.bind(this);
+
+
+
 
 
   }
@@ -530,18 +536,57 @@ class CalendarInfo extends React.Component {
 
 
   onClickAll(index, panel) {
-    console.log("clickall" + index + panel);
-    const tempAll = this.state["all" + panel];
-    const tempSelect = this.state["selected" + panel];
+    if (panel !== "Time") {
+      console.log("clickall" + index + panel);
+      const tempAll = this.state["all" + panel];
+      const tempSelect = this.state["selected" + panel];
 
-    tempSelect.push(tempAll[index]);
+      tempSelect.push(tempAll[index]);
 
-    tempAll.splice(index, 1);
-    this.setState({
-      ["all" + panel]: tempAll,
-      ["selected" + panel]: tempSelect
-    });
+      tempAll.splice(index, 1);
+      this.setState({
+        ["all" + panel]: tempAll,
+        ["selected" + panel]: tempSelect
+      });
+    }
+    else{
+      if (this.state.selectedTime.length == 0){
+        const tempAll = this.state.allTime;
+        const tempSelect = this.state.selectedTime;
 
+        tempSelect.push(tempAll[index]);
+
+        tempAll.splice(index, 1);
+        this.setState({
+          allTime: tempAll,
+          selectedTime: tempSelect,
+          finalStartTime: tempSelect[0].start.date(),
+          finalEndTime: tempSelect[0].end ? tempSelect[0].end.date() : null,
+        })
+      }
+      else{
+        const tempAll = this.state.allTime;
+        const tempSelect = this.state.selectedTime;
+
+        tempSelect.push(tempAll[index]);
+        tempAll.push(tempSelect.shift());
+
+        tempAll.splice(index, 1);
+        this.setState({
+          allTime: tempAll,
+          selectedTime: tempSelect,
+          finalStartTime: tempSelect[0].start.date(),
+          finalEndTime: tempSelect[0].end ? tempSelect[0].end.date() : null,
+
+        })
+
+
+      }
+
+
+
+
+    }
   };
 
   onClickSelected(index, panel) {
@@ -558,6 +603,15 @@ class CalendarInfo extends React.Component {
       ["all" + panel]: tempAll,
       ["selected" + panel]: tempSelect
     });
+
+    if(this.state.selectedTime.length == 0){
+      this.setState(
+        {
+          finalStartTime: null,
+          finalEndTime: null,
+        }
+      )
+    }
 
   };
 
@@ -603,12 +657,33 @@ class CalendarInfo extends React.Component {
         selectedURL: lineByURL.slice(0, 1),
         allTime: [...Chrono.parse(wholeWord)].slice(1),
         selectedTime: [...Chrono.parse(wholeWord)].slice(0, 1),
+        finalStartTime: [...Chrono.parse(wholeWord)].slice(0, 1)[0]? [...Chrono.parse(wholeWord)].slice(0, 1)[0].start.date() : null,
+        finalEndTime: [...Chrono.parse(wholeWord)].slice(0, 1)[0]? ([...Chrono.parse(wholeWord)].slice(0, 1)[0].end? [...Chrono.parse(wholeWord)].slice(0, 1)[0].end.date() : null) : null,
         wholeWord: wholeWord,
       });
 
 
   }
 
+
+
+  handleStartTimeChange(time){
+    console.log(time);
+    this.setState(
+      {
+        finalStartTime: time._d,
+      }
+    )
+  }
+
+  handleEndTimeChange(time){
+    console.log(time);
+    this.setState(
+      {
+        finalEndTime: time._d,
+      }
+    )
+  }
 
   render() {
 
@@ -630,9 +705,9 @@ class CalendarInfo extends React.Component {
       areaContent =
         <div>
           <p>Start Time</p>
-          <Datetime value={this.state.selectedTime[0] ? this.state.selectedTime[0].start.date() : null}/>
+          <Datetime onChange={this.handleStartTimeChange} value={this.state.finalStartTime}/>
           <p>End Time</p>
-          <Datetime value={this.state.selectedTime[0].end? this.state.selectedTime[0].end.date() : null }/>
+          <Datetime onChange={this.handleEndTimeChange} value={this.state.finalEndTime} />
         <SortableListSelectedTime panel={this.state.currentPanel}
                               selected={this.state.selectedTime}
                               onSortEnd={this.onSortEndSelected}
