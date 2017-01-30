@@ -594,7 +594,6 @@ class CalendarInfo extends React.Component {
       <div className={s.container}>
 
         <div className={s.appWrap}>
-
           <div className={s.areaSubmit}>
             <button className={s.buttonSignOut} onClick={this.handleSubmit}><i className="fa fa-sign-out  fa-2.5x"/></button>
             <h1>Event</h1>
@@ -605,6 +604,11 @@ class CalendarInfo extends React.Component {
             <SortableListSelected panel={this.state.currentPanel} selected={this.state["selected"+this.state.currentPanel]}
                           onSortEnd={this.onSortEndSelected}
                           onClickSelected={this.onClickSelected} pressDelay={200}/>
+            
+
+            <div className = {s.poolHeading}>
+               <h1>Tap to select</h1>
+            </div>
 
             <SortableListAll panel={this.state.currentPanel} all={this.state["all"+this.state.currentPanel]}
                                   onSortEnd={this.onSortEndAll}

@@ -21,12 +21,14 @@ class Success extends React.Component {
           <button className = {s.button}><i className="fa fa-google-plus-square"/></button>
           <button className = {s.button}><i className="fa fa-apple"/></button>
           <button className = {s.button}><i className="fa fa-camera"/></button>
+          <button className = {s.button}><i className="fa fa-file"/></button>
         </div>
 
         <div className = {s.buttonText}>
           <p>Visit Google Calendar</p>
           <p>Save to iCal</p>
           <p>Add another</p>
+          <p>See poster</p>
         </div>
 
       </div>
