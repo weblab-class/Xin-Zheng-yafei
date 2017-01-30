@@ -6,11 +6,29 @@ import s from "./Success.css"
 class Success extends React.Component {
   render() {
     return (
-      <div className="container">
-        <h1>Success!</h1>
-        <button className={s.buttonAddAnother}>Add another</button>
-        <button className={s.buttonGoogleCal}>Go to <img src="#" alt = "Google Calendar"/></button>
-        <button className={s.buttonICal}>Save to <img src="#" alt = "iCal"/></button>
+      <div className={s.container}>
+
+        <div className = {s.areaHeading}>
+          <button className={s.buttonSignOut}><i className="fa fa-sign-out  fa-2.5x"/></button>
+        </div>
+
+        <div className = {s.areaSuccessMsg}>
+          <i className="fa fa-check-circle-o"/>
+          <h1>Success</h1>
+        </div>
+        
+        <div className = {s.areaButton}>
+          <button className = {s.button}><i className="fa fa-google-plus-square"/></button>
+          <button className = {s.button}><i className="fa fa-apple"/></button>
+          <button className = {s.button}><i className="fa fa-camera"/></button>
+        </div>
+
+        <div className = {s.buttonText}>
+          <p>Visit Google Calendar</p>
+          <p>Save to iCal</p>
+          <p>Add another</p>
+        </div>
+
       </div>
 
     );

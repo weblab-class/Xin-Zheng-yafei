@@ -24,7 +24,7 @@ body {
   margin: 0vh auto 0vh auto;
 
   background: white;
-  /*border: 5px solid black;*/
+  border: 1px solid rgba(0,0,0,0.2);
 }
 
 
@@ -76,6 +76,7 @@ body {
 .areaContent {
   height: 90%;
 }
+
 
 
 .instruction {
