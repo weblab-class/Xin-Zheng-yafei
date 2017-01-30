@@ -6,74 +6,154 @@ html {
   box-sizing: inherit;
 }
 
+
 body {
-  font-family: Montserrat,Helvetica Neue,Helvetica,arial,sans-serif;
-  margin: -2;
+  
   padding: 0;
-  font-size: 1.5rem;
-  /*background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);*/
-  /*background: linear-gradient(to left, #fceabb , #f8b500);*/
+  margin: 0;
+
   background-color: white;
+
+  font-size: 1.5rem;
+  font-family: Montserrat,Helvetica Neue,Helvetica,arial,sans-serif;
 }
 
+
+.container {
+  /*max-width: 640px;*/
+  height: 100vh;
+  padding: 0px;
+  margin: 0px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .appWrap{
   max-width: 640px;
   min-width:100vm;
-  height: 90vh;
-  margin: 0px;
-  border: 5px solid black;
+  height: 100vh;
+  margin-left: 0%;
+  margin-right: 0%;
 
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+
+
+  /*justify-content: center;*/
+
+}
+
+
+
+.appWrap > * {
+  flex:1 1 auto;
 }
 
 .areaSubmit {
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+
+  display:flex;
+
+  width: 100%;
   max-height: 10%;
   min-height: 50px;
-  padding: 3%;
-  padding-bottom: 5%;
-  margin-bottom: 2rem;
+  padding-left: 5%;
+  padding-right: 5%;
+
+  /*padding-bottom: 5%;*/
 
   background-color: #ecf0f1;
   color:rgba(0,0,0,0.5);
   
 }
 
+.areaSubmit .buttonSignOut {
+  display: inline-block;
+  text-align: center;
+
+  width: 10%;
+  padding: 1%;
+  margin: 4px 2px;
+
+  font-size: 2.8rem;
+  border: none;
+  background-color: transparent;
+  color: black;
+  text-decoration: none;
+
+  
+}
+
+
 .areaSubmit h1 {
+
+  text-align: center;
+  margin: 4px 2px;
+  width:80%;
+
   color: rgba(0,0,0,0.6);
   font-size: 2.5rem;
+}
+
+
+.buttonSubmit {
+
+  display: inline-block;
+  width: 10%;
+  margin: 4px 2px;
+  padding: 1%;
+  font-size: 2.5rem;
   text-align: center;
+
+  border: none;
+  background-color: transparent;
+  color: rgba(0,0,0,0.6);
+  text-decoration: none;
+  
 }
 
 i {
   color: rgba(0,0,0,0.5);
 }
 
-.areaContent {
-  background:white;
-  /*box-shadow:inset 0 3px 0 rgba(0,0,0,0.3);*/
-  line-height: 1.6;
-  max-height: 90%;
-  overflow:hidden;
-  width: 100%;
-  padding-left: 0;
-  
 
+
+.areaContent {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-height: 90%;
+  line-height: 1.6;
+  overflow:hidden;
+  /*padding-left: 0;*/
+  /*margin: 2% 2%;*/
+  overflow-y:scroll;
+  -webkit-overflow-scrolling:touch;
+
+  background:white;
+  
 }
 
 .areaContent ul {
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 8%;
+  padding-right: 8%;
+  margin-top: 5%;
 }
+
 
 .textWrap {
   position: relative;
   z-index: 0;
   background-color: #f3f3f3;
-  /*border: 1px solid #efefef;*/
   border-radius: 3px;
   outline: none;
+
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -82,7 +162,7 @@ i {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  /*width: 100%;*/
+
   padding: 0 0px;
   flex: 3 2 auto;
   margin-left: 0px;
@@ -116,11 +196,7 @@ i {
   align-items: center;
   width: 100%;
   padding: 0 0px;
-  /*background-color: #fff;*/
-  /*background-color: #efbc4d;*/
   border-bottom: 2px solid orange;
-  /*background-color: rgba(243, 156, 18, 0.7);*/
-  /*border-bottom: 1px solid #efefef;*/
   box-sizing: border-box;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -134,57 +210,42 @@ i {
 }
 
 
-/*.textWrapOld {
-  width: 85%;
-  margin: auto;
-  padding: 0px;
-  padding-left: 10px;
-
-  border: 1px solid #BDBDBD;
-  border-radius: 5px;
-  box-shadow: 1px 2px 5px #888888;
-
-  text-align: left;
-  font-size: 1rem;
-  color: #424242;
-
-  overflow:hidden;
-  text-overflow: ellipsis;
-}
-
-.textWrap .onclick{
-  /*border: 4px solid #40C4FF;*/
-  /*border: 4px solid #FF5A5F;*/
-/*  border: 0.2rem solid #F39C12;
-}
-
-.textWrap .unclick {
-  border: 1px solid #BDBDBD;
-}*/
-
 .areaOption {
-  border-top:1px solid #E6E6E6;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
   max-height: 10%;
   min-height: 70px;
   margin-top: 0px;
+
   background-color: #ecf0f1;
-  /*margin-top: 3%;*/
+  border-top:1px solid #E6E6E6;
+  
 }
 
+
 .areaOption .buttonCalOpt {
+  
+  flex:1;
+
+  padding: 1%;
+  margin: 1%;
   text-align: center;
-  /*font-size: 50%;*/
-  font-size: 1rem;
+
   border-left:1px solid rgba(0,0,0,0.1);
-  /*background: #F1C40F;*/
   background-color: transparent;
   color:rgba(0,0,0,0.5);
   border-color: transparent;
 }
 
+
 .areaOption .buttonCalOpt:first-child {
   border-left: 0;
 }
+
+
 
 .areaOption .buttonCalOpt:hover {
   border-bottom: 5px solid rgba(0,0,0,0.1);
@@ -193,101 +254,21 @@ i {
 
 .areaOption i {
   display: block;
-  font-size: 350%;
+  font-size: 250%;
   color: rbga(0.6);
-  /*text-shadow:3px 3px 0 rgba(0,0,0,0.1);*/
-  /*padding-bottom: 1rem;*/
+  margin: 0;
+  padding: 0;
 }
 
 
-/*
-  Everything So far is Cosmetic styling
-
-  Flexbox + Important CSS Starts Here
-
-*/
-
-/* appWrap*/
-
-.appWrap {
-  display:flex;
-  flex-direction:column;
-}
-
-.appWrap > * {
-  flex:1 1 auto;
-}
-
-/*
-  Header
-*/
-
-.areaSubmit {
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-
-}
-
-/*
-  Content
-*/
-
-.areaContent {
-  display: flex;
-  flex-direction: column;
-  overflow-y:scroll;
-  -webkit-overflow-scrolling:touch;
-}
-
-.areaContent .box {
-  flex: 1;
-  min-height: 3.2rem;
-}
 
 
-/*
-  Icon Bar
-*/
-
-.areaOption {
-  display:flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.areaOption .buttonCalOpt {
-  flex:1;
-}
-
-/* submit button */
-.buttonSubmit {
-  border: none;
-  background-color: transparent;
-  color: rgba(0,0,0,0.6);
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  font-size: 2.5rem;
-  /*cursor: pointer;*/
-  /*box-shadow: 2px 2px rgba(0,0,0,0.4);*/
-}
 
 
-.buttonSignOut {
-  border: none;
-  background-color: transparent;
-  color: black;
-  /*padding: 15px 32px;*/
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  /*font-size: 16px;*/
-  margin: 4px 2px;
-  font-size: 2.8rem;
 
-}
+
+
+
 
 
 

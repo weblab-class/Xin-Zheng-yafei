@@ -597,7 +597,7 @@ class CalendarInfo extends React.Component {
 
           <div className={s.areaSubmit}>
             <button className={s.buttonSignOut} onClick={this.handleSubmit}><i className="fa fa-sign-out  fa-2.5x"/></button>
-            <h1>Select Event</h1>
+            <h1>Event</h1>
             <button className={s.buttonSubmit} onClick={this.handleSubmit}><i className="fa fa-paper-plane  fa-2.5x"/></button>
           </div>
 
