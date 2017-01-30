@@ -475,34 +475,38 @@ class CalendarInfo extends React.Component {
       console.log("signedIN");
       this.submit();
     }
-
-
   }
 
   submit() {
+    this.props.SubmitToRedux(this.state);
+    // this.props.router.push('/success');
+
+    const eventName = this.state.selectedTitle.join(" ");
+    const locationName = this.state.selectedPlace.join(" ");
+    const description = this.state.wholeWord;
+    const start = this.state.finalStartTime;
+    const end = this.state.finalEndTime;
+    const urlInPoster = this.state.selectedURL;
+
+
     var event = {
-      'summary': 'Google I/O 2015',
-      'location': '800 Howard St., San Francisco, CA 94103',
-      'description': 'A chance to hear more about Google\'s developer products.',
+      'summary': eventName,
+      'location': locationName,
+      'description': "URL:"+urlInPoster+"\n\n"+description,
       'start': {
-        'dateTime': '2017-01-28T09:00:00-07:00',
-        'timeZone': 'America/Los_Angeles'
+        'dateTime': start,
       },
       'end': {
-        'dateTime': '2017-01-28T17:00:00-07:00',
-        'timeZone': 'America/Los_Angeles'
+        'dateTime': end,
       },
-      'recurrence': [
-        'RRULE:FREQ=DAILY;COUNT=2'
-      ],
-      'attendees': [
-        {'email': 'lpage@example.com'},
-        {'email': 'sbrin@example.com'}
-      ],
+      "source":{
+        "title":"Poster URL",
+        "url": this.props.url.URL,
+      },
       'reminders': {
         'useDefault': false,
         'overrides': [
-          {'method': 'email', 'minutes': 24 * 60},
+          // {'method': 'email', 'minutes': 24 * 60},
           {'method': 'popup', 'minutes': 10}
         ]
       }
@@ -515,7 +519,6 @@ class CalendarInfo extends React.Component {
             'calendarId': 'primary',
             'resource': event
           });
-
           request.execute(() => console.log("done"));
         }
       )
@@ -628,7 +631,7 @@ class CalendarInfo extends React.Component {
   componentWillMount() {
     let wholeWord = "";
     const wordByLine = [];
-    for (let region of this.state.ocr.regions) {
+    for (let region of this.props.ocr.ocr.regions) {
       for (let line of region.lines) {
         let lineText = "";
         for (let word of line.words) {
@@ -641,9 +644,9 @@ class CalendarInfo extends React.Component {
     }
 
 
-    const lineByHeight = sortLines(this.state.ocr, lineHeight, "height");
-    const lineByAddress = sortLines(this.state.ocr, likeAddress, "address");
-    const lineByURL = allURL(this.state.ocr);
+    const lineByHeight = sortLines(this.props.ocr.ocr, lineHeight, "height");
+    const lineByAddress = sortLines(this.props.ocr.ocr, likeAddress, "address");
+    const lineByURL = allURL(this.props.ocr.ocr);
 
 
     this.setState(
@@ -719,6 +722,12 @@ class CalendarInfo extends React.Component {
       </div>
     }
 
+    let headerTitle = null;
+    if (this.state.currentPanel === "Title")  headerTitle  =  <h1>Event</h1>
+    if (this.state.currentPanel === "Time")  headerTitle = <h1>Time</h1>
+    if (this.state.currentPanel === "Place")  headerTitle = <h1>Location</h1>
+    if (this.state.currentPanel === "URL")  headerTitle = <h1>URL</h1>
+
 
     return (
       <div className={s.container}>
@@ -726,8 +735,8 @@ class CalendarInfo extends React.Component {
         <div className={s.appWrap}>
 
           <div className={s.areaSubmit}>
-            <button className={s.buttonSignOut} onClick={this.handleSubmit}><i className="fa fa-sign-out  fa-2.5x"/></button>
-            <h1>Event</h1>
+            <button className={s.buttonSignOut} ><i className="fa fa-sign-out  fa-2.5x"/></button>
+            {headerTitle}
             <button className={s.buttonSubmit} onClick={this.handleSubmit}><i className="fa fa-paper-plane  fa-2.5x"/></button>
           </div>
 

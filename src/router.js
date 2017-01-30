@@ -6,7 +6,7 @@ import Login from "./components/Login/Login";
 import NotFound from "./components/NotFound";
 import CameraContainer from "./Container/CameraContainer"
 import CalendarContainer from "./Container/CalendarContainer"
-import Success from "./components/Success/Success"
+import SuccessContainer from "./Container/SuccessContainer"
 import Fail from "./components/Fail/Fail"
 
 
@@ -18,7 +18,7 @@ const router = (
       <IndexRoute component={Login}/>
       <Route path="/camera" component={CameraContainer}/>
       <Route path="/calendar" component={CalendarContainer}/>
-      <Route path="/success" component={Success}/>
+      <Route path="/success" component={SuccessContainer}/>
       <Route path="/fail" component={Fail}/>
 
       <Route path="*" component={NotFound}/>

@@ -12,6 +12,7 @@ import Calendar from '../components/CalendarInfo/CalendarInfo';
 function mapStateToProps(state) {
   return {
     ocr: state.ocr,
+    url: state.url,
   }
 }
 

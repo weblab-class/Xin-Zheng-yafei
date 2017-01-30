@@ -26,3 +26,10 @@ export function receiveURL(res) {
     res
   }
 }
+
+export function SubmitToRedux(res) {
+  return {
+    type: "SubmitToRedux",
+    res
+  }
+}

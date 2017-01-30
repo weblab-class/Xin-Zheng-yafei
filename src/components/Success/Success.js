@@ -1,9 +1,37 @@
 import React from "react";
 import s from "./Success.css"
+import * as ICS from 'ics-js';
+import FileSaver from 'file-saver';
+
+
+
 
 
 // Success page component
 class Success extends React.Component {
+
+  handleICS(){
+    const cal = new ICS.VCALENDAR();
+
+
+    cal.addProp('VERSION', 2) // Number(2) is converted to '2.0'
+    cal.addProp('PRODID', 'XYZ Corp');
+
+    const event = new ICS.VEVENT();
+    event.addProp('UID');
+    event.addProp('DTSTAMP', new Date('2017-07-18 10:00:00'), { VALUE: 'DATE-TIME' });
+    event.addProp('ATTENDEE', null, {
+      CN: 'Sample Company',
+      RSVP: 'FALSE:mailto:foo@example.com'
+    });
+    cal.addComponent(event);
+
+    FileSaver.saveAs(cal.toBlob());
+
+
+  }
+
+
   render() {
     return (
       <div className={s.container}>
@@ -16,10 +44,10 @@ class Success extends React.Component {
           <i className="fa fa-check-circle-o"/>
           <h1>Success</h1>
         </div>
-        
+
         <div className = {s.areaButton}>
-          <button className = {s.button}><i className="fa fa-google-plus-square"/></button>
-          <button className = {s.button}><i className="fa fa-apple"/></button>
+          <button className = {s.button}> <a href="https://calendar.google.com/" target="_blank"> <i className="fa fa-google-plus-square"/></a>  </button>
+          <button className = {s.button} onClick={this.handleICS.bind(this)}><i className="fa fa-apple"/></button>
           <button className = {s.button}><i className="fa fa-camera"/></button>
         </div>
 
