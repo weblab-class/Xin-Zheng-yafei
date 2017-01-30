@@ -74,24 +74,24 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className={s.container}>
-        <div className={s.cover}>
-          <div className={s.head}></div>
-          <div className={s.middle}>
-            <p style={{fontSize: 30}}>Welcome to Poster-Cal</p>
-            <div className={s.box}>
-              {/*<img className="google" src="g.png"/>*/}
-                <button id="signin-button" onClick={this.handleSignInClick}>Sign in with Google Calendar</button>
-            </div>
-          </div>
-          <div className={s.bottom}>
-          </div>
-        </div>
-        </div>
+      <div className={s.cover}>
 
+        <div className={s.middle}>
+          <h1>Welcome to Poster-Cal</h1>
+            {/*<img className="google" src="g.png"/>*/}
+              <button id="signin-button" onClick={this.handleSignInClick}>Sign in with Google + </button>
+        </div>
+        <div className = {s.backgroundImage}></div>
 
+      </div>
     );
   }
 }
 
 export default Login;
+
+
+
+
+
+

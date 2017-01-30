@@ -726,9 +726,9 @@ class CalendarInfo extends React.Component {
         <div className={s.appWrap}>
 
           <div className={s.areaSubmit}>
-            <h1>event</h1>
-            <button className={s.buttonSubmit} onClick={this.handleSubmit}><span>Submit </span></button>
-
+            <button className={s.buttonSignOut} onClick={this.handleSubmit}><i className="fa fa-sign-out  fa-2.5x"/></button>
+            <h1>Event</h1>
+            <button className={s.buttonSubmit} onClick={this.handleSubmit}><i className="fa fa-paper-plane  fa-2.5x"/></button>
           </div>
 
           <div className={s.areaContent}>
@@ -736,16 +736,10 @@ class CalendarInfo extends React.Component {
           </div>
 
           <div className={s.areaOption}>
-            <button className={s.buttonCalOpt}><i className="fa fa-newspaper-o"
-                                                  onClick={() => this.changePanel("Title")}/>Event
-            </button>
-            <button className={s.buttonCalOpt}><i className="fa fa-clock-o" onClick={() => this.changePanel("Time")}/>Time
-            </button>
-            <button className={s.buttonCalOpt}><i className="fa fa-map-marker"
-                                                  onClick={() => this.changePanel("Place")}/>Place
-            </button>
-            <button className={s.buttonCalOpt}><i className="fa fa-link" onClick={() => this.changePanel("URL")}/>URL
-            </button>
+            <button className={s.buttonCalOpt}><i className="fa fa-newspaper-o" onClick={() => this.changePanel("Title")}/></button>
+            <button className={s.buttonCalOpt}><i className="fa fa-clock-o" onClick={() => this.changePanel("Time")}/></button>
+            <button className={s.buttonCalOpt}><i className="fa fa-map-marker" onClick={() => this.changePanel("Place")}/></button>
+            <button className={s.buttonCalOpt}><i className="fa fa-link" onClick={() => this.changePanel("URL")}/></button>
 
           </div>
         </div>

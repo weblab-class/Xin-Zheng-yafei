@@ -7,6 +7,7 @@ import Dropzone from 'react-dropzone';
 import request from 'superagent';
 
 
+
 const CLOUDINARY_UPLOAD_PRESET = 'p4parhk9';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/xinzheng/image/upload';
 
@@ -83,30 +84,35 @@ class Camera extends React.Component {
 
     return (
 
-
-
       <div className={s.appWrap}>
-        <div className={s.text}>
-          <h1>Click to shot or upload a poster</h1>
-        </div>
-        <div className={s.camera}>
 
-          <Dropzone
+        <div className={s.areaHeading}>
+
+          <button className={s.buttonSignOut}><i className="fa fa-sign-out  fa-2.5x"/></button>
+          <h1>Camera</h1>
+          <div className={s.empty}></div>
+
+        </div>
+
+        <div className={s.areaContent}>
+
+          <div className={s.instruction}>
+            <h1>Click to shot or upload a poster</h1>
+          </div>
+
+          <Dropzone className = {s.camera}
             multiple={false}
             accept="image/*"
             onDrop={this.onImageDrop.bind(this)}>
-            <b style={{fontSize: 18}}>click to select a poster to upload.</b>
+            <i className="fa fa-camera"/>
+            {this.state.wait ? <p className={s.blink}>waiting...</p> : null }
           </Dropzone>
 
-          { this.state.wait ? <p className={s.blink} >
-            waiting....
-          </p> : null }
-
         </div>
+
       </div>
 
     );
   }
 }
-
 export default Camera
