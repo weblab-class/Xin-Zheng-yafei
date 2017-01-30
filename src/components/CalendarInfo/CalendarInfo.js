@@ -698,7 +698,9 @@ class CalendarInfo extends React.Component {
                               selected={this.state["selected" + this.state.currentPanel]}
                               onSortEnd={this.onSortEndSelected}
                               onClickSelected={this.onClickSelected} pressDelay={200}/>
-
+          <div className = {s.poolHeading}>
+            <h1>Tap to select</h1>
+          </div>
         <SortableListAll panel={this.state.currentPanel} all={this.state["all" + this.state.currentPanel]}
                          onSortEnd={this.onSortEndAll}
                          onClickAll={this.onClickAll} pressDelay={200}/>
@@ -715,6 +717,9 @@ class CalendarInfo extends React.Component {
                               selected={this.state.selectedTime}
                               onSortEnd={this.onSortEndSelected}
                               onClickSelected={this.onClickSelected} pressDelay={200} />
+          <div className = {s.poolHeading}>
+            <h1>Tap to select</h1>
+          </div>
 
         <SortableListAllTime panel={this.state.currentPanel} all={this.state.allTime}
                          onSortEnd={this.onSortEndAll}
@@ -733,7 +738,6 @@ class CalendarInfo extends React.Component {
       <div className={s.container}>
 
         <div className={s.appWrap}>
-
           <div className={s.areaSubmit}>
             <button className={s.buttonSignOut} ><i className="fa fa-sign-out  fa-2.5x"/></button>
             {headerTitle}
