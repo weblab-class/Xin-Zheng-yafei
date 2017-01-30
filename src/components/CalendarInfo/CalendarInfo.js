@@ -753,7 +753,6 @@ class CalendarInfo extends React.Component {
             <button className={s.buttonCalOpt}><i className="fa fa-clock-o" onClick={() => this.changePanel("Time")}/></button>
             <button className={s.buttonCalOpt}><i className="fa fa-map-marker" onClick={() => this.changePanel("Place")}/></button>
             <button className={s.buttonCalOpt}><i className="fa fa-link" onClick={() => this.changePanel("URL")}/></button>
-
           </div>
         </div>
       </div>

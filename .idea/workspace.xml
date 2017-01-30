@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="017e9fae-c7a7-4b64-bb0e-261c6658beba" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.css" afterPath="$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.js" afterPath="$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Camera/Camera.css" afterPath="$PROJECT_DIR$/src/components/Camera/Camera.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Fail/Fail.css" afterPath="$PROJECT_DIR$/src/components/Fail/Fail.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Success/Success.css" afterPath="$PROJECT_DIR$/src/components/Success/Success.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Success/Success.js" afterPath="$PROJECT_DIR$/src/components/Success/Success.js" />
     </list>
     <ignored path="postalCal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,8 +28,8 @@
       <file leaf-file-name="CalendarInfo.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="745" column="0" selection-start-line="745" selection-start-column="0" selection-end-line="745" selection-end-column="0" />
+            <state relative-caret-position="587">
+              <caret line="756" column="14" selection-start-line="756" selection-start-column="14" selection-end-line="756" selection-end-column="14" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -107,8 +101,8 @@
         <option value="$PROJECT_DIR$/src/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/Container/SuccessContainer.js" />
         <option value="$PROJECT_DIR$/src/Container/CalendarContainer.js" />
-        <option value="$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.js" />
         <option value="$PROJECT_DIR$/src/components/Success/Success.js" />
+        <option value="$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.js" />
       </list>
     </option>
   </component>
@@ -476,12 +470,12 @@
       <workItem from="1485536699359" duration="10573000" />
       <workItem from="1485616638914" duration="12195000" />
       <workItem from="1485719531451" duration="2000" />
-      <workItem from="1485796531198" duration="9916000" />
+      <workItem from="1485796531198" duration="10177000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112035000" />
+    <option name="totallyTimeSpent" value="112296000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1007" extended-state="6" />
@@ -845,8 +839,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="745" column="0" selection-start-line="745" selection-start-column="0" selection-end-line="745" selection-end-column="0" />
+        <state relative-caret-position="587">
+          <caret line="756" column="14" selection-start-line="756" selection-start-column="14" selection-end-line="756" selection-end-column="14" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
