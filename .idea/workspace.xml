@@ -28,8 +28,8 @@
       <file leaf-file-name="CalendarInfo.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="429" column="41" selection-start-line="429" selection-start-column="41" selection-end-line="429" selection-end-column="41" />
+            <state relative-caret-position="240">
+              <caret line="431" column="25" selection-start-line="431" selection-start-column="25" selection-end-line="431" selection-end-column="25" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="e#868#1179#0" expanded="false" />
@@ -250,12 +250,12 @@
       <workItem from="1485536699359" duration="10573000" />
       <workItem from="1485616638914" duration="12195000" />
       <workItem from="1485719531451" duration="2000" />
-      <workItem from="1485796531198" duration="3000" />
+      <workItem from="1485796531198" duration="207000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102122000" />
+    <option name="totallyTimeSpent" value="102326000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1007" extended-state="6" />
@@ -601,8 +601,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="429" column="41" selection-start-line="429" selection-start-column="41" selection-end-line="429" selection-end-column="41" />
+        <state relative-caret-position="240">
+          <caret line="431" column="25" selection-start-line="431" selection-start-column="25" selection-end-line="431" selection-end-column="25" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
             <element signature="e#868#1179#0" expanded="false" />
