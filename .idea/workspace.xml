@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="017e9fae-c7a7-4b64-bb0e-261c6658beba" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Camera/img/cameraIcon.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Login/img/posterBG1.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Login/img/posterBG2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Login/img/posterBG3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Login/img/posterWall-2.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Login/img/posterBG4.jpg" afterPath="$PROJECT_DIR$/src/components/Login/img/posterBG4.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/main.css" afterPath="$PROJECT_DIR$/public/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/bundle.js" afterPath="$PROJECT_DIR$/public/js/bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/App.js" afterPath="$PROJECT_DIR$/src/components/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.css" afterPath="$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.js" afterPath="$PROJECT_DIR$/src/components/CalendarInfo/CalendarInfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Camera/Camera.css" afterPath="$PROJECT_DIR$/src/components/Camera/Camera.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Camera/Camera.js" afterPath="$PROJECT_DIR$/src/components/Camera/Camera.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Success/Success.css" afterPath="$PROJECT_DIR$/src/components/Success/Success.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Success/Success.js" afterPath="$PROJECT_DIR$/src/components/Success/Success.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stylesheets/main.scss" afterPath="$PROJECT_DIR$/src/stylesheets/main.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
-    </list>
+    <list default="true" id="017e9fae-c7a7-4b64-bb0e-261c6658beba" name="Default" comment="" />
     <ignored path="postalCal.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -88,8 +68,8 @@
       <file leaf-file-name="Success.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Success/Success.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="59" column="80" selection-start-line="59" selection-start-column="80" selection-end-line="59" selection-end-column="80" />
+            <state relative-caret-position="430">
+              <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -662,16 +642,16 @@
       <workItem from="1485536699359" duration="10573000" />
       <workItem from="1485616638914" duration="12195000" />
       <workItem from="1485719531451" duration="2000" />
-      <workItem from="1485796531198" duration="25140000" />
+      <workItem from="1485796531198" duration="25336000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127259000" />
+    <option name="totallyTimeSpent" value="127455000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1007" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2515625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1081,8 +1061,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Success/Success.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="59" column="80" selection-start-line="59" selection-start-column="80" selection-end-line="59" selection-end-column="80" />
+        <state relative-caret-position="430">
+          <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
           <folding />
         </state>
       </provider>
