@@ -7,6 +7,7 @@ import Dropzone from 'react-dropzone';
 import request from 'superagent';
 
 
+
 const CLOUDINARY_UPLOAD_PRESET = 'p4parhk9';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/xinzheng/image/upload';
 
@@ -20,7 +21,11 @@ class Camera extends React.Component {
       wait: false,
       uploadedFileCloudinaryUrl: ''
     };
-    this.handleImageUpload = this.handleImageUpload.bind(this)
+    this.handleImageUpload = this.handleImageUpload.bind(this);
+    // this.updateSigninStatus = this.updateSigninStatus(this);
+    // this.initClient = this.initClient(this);
+
+
   };
 
 
@@ -68,6 +73,7 @@ class Camera extends React.Component {
         }
 
         this.props.receiveOCR(response.text);
+        this.props.receiveURL(this.state.uploadedFileCloudinaryUrl);
         console.log(response);
         this.props.router.push('/calendar');
         });
@@ -78,34 +84,45 @@ class Camera extends React.Component {
   }
 
 
+  handleSignOutClick(event) {
+    gapi.auth2.getAuthInstance().signOut(this.props.router.push('/'));
+  }
+
+
+
   render() {
 
     return (
 
+      <div className={s.appWrap} style={{height: window.innerHeight}}>
 
+        <div className={s.areaHeading}>
 
-      <div className={s.appWrap}>
-        <div className={s.text}>
-          <h1>Click to shot or upload a poster</h1>
+          <button className={s.buttonSignOut} onClick={this.handleSignOutClick.bind(this)}><i className="fa fa-power-off fa-2.5x"/></button>
+          <h1>Camera</h1>
+          <div className={s.empty}></div>
+
         </div>
-        <div className={s.camera}>
 
-          <Dropzone
+        <div className={s.areaContent}>
+
+          <div className={s.instruction}>
+            <h1>Click to shot or upload a poster</h1>
+          </div>
+
+          <Dropzone className = {s.camera}
             multiple={false}
             accept="image/*"
             onDrop={this.onImageDrop.bind(this)}>
-            <b style={{fontSize: 18}}>click to select a poster to upload.</b>
+            <i className="fa fa-camera"/>
+            {this.state.wait ? <p className={s.blink}>waiting...</p> : null }
           </Dropzone>
 
-          { this.state.wait ? <p className={s.blink} >
-            waiting....
-          </p> : null }
-
         </div>
+
       </div>
 
     );
   }
 }
-
 export default Camera

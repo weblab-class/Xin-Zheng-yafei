@@ -11,7 +11,6 @@ class Login extends React.Component {
     // This binding is necessary to make `this` work in the callback
     this.handleSignInClick = this.handleSignInClick.bind(this);
     this.initClient = this.initClient.bind(this);
-    this.makeApiCall = this.makeApiCall.bind(this);
     this.updateSigninStatus = this.updateSigninStatus.bind(this);
 
   }
@@ -48,15 +47,15 @@ class Login extends React.Component {
   }
 
 
-  makeApiCall() {
-    gapi.client.request({
-      'path': 'https://www.googleapis.com/calendar/v3/calendars/primary/events?key=AIzaSyANWhk-aYTE-SmP4PoMHNKgTqTAiTkbfnM',
-    }).then(function (response) {
-      console.log(response.result);
-    }, function (reason) {
-      console.log('Error: ' + reason.result.error.message);
-    });
-  }
+  // makeApiCall() {
+  //   gapi.client.request({
+  //     'path': 'https://www.googleapis.com/calendar/v3/calendars/primary/events?key=AIzaSyANWhk-aYTE-SmP4PoMHNKgTqTAiTkbfnM',
+  //   }).then(function (response) {
+  //     console.log(response.result);
+  //   }, function (reason) {
+  //     console.log('Error: ' + reason.result.error.message);
+  //   });
+  // }
 
 
   updateSigninStatus(isSignedIn) {
@@ -64,8 +63,7 @@ class Login extends React.Component {
     // If the signin status is changed to signedIn, we make an API call.
     if (isSignedIn) {
       console.log("signedIN");
-      this.props.router.push('/camera')
-      this.makeApiCall();
+      this.props.router.push('/camera');
     }
 
 
@@ -74,24 +72,24 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className={s.container}>
-        <div className={s.cover}>
-          <div className={s.head}></div>
-          <div className={s.middle}>
-            <p style={{fontSize: 30}}>Welcome to Poster-Cal</p>
-            <div className={s.box}>
-              {/*<img className="google" src="g.png"/>*/}
-                <button id="signin-button" onClick={this.handleSignInClick}>Sign in with Google Calendar</button>
-            </div>
-          </div>
-          <div className={s.bottom}>
-          </div>
-        </div>
-        </div>
+      <div className={s.cover}>
 
+        <div className={s.middle}>
+          <h1>Welcome to Poster-Cal</h1>
+            {/*<img className="google" src="g.png"/>*/}
+              <button id="signin-button" onClick={this.handleSignInClick}>Sign in with Google + </button>
+        </div>
+        <div className = {s.backgroundImage}></div>
 
+      </div>
     );
   }
 }
 
 export default Login;
+
+
+
+
+
+

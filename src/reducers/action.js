@@ -17,3 +17,19 @@ export function receiveOCR(res) {
     res
   }
 }
+
+
+
+export function receiveURL(res) {
+  return {
+    type: "receiveURL",
+    res
+  }
+}
+
+export function SubmitToRedux(res) {
+  return {
+    type: "SubmitToRedux",
+    res
+  }
+}
