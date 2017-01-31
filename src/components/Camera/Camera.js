@@ -94,7 +94,7 @@ class Camera extends React.Component {
 
     return (
 
-      <div className={s.appWrap}>
+      <div className={s.appWrap} style={{height: window.innerHeight}}>
 
         <div className={s.areaHeading}>
 

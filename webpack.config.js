@@ -3,7 +3,7 @@
 var app_root = 'src'; // the app root folder: src, src_users, etc
 var path = require('path');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 
 module.exports = {

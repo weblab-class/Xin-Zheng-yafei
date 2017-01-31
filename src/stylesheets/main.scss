@@ -1,7 +1,11 @@
-.container{
-
-max-width: 640px;
-min-width: 400px;
+.ReactContainer{
+  max-width: 640px;
+  min-width: 400px;
+  padding: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin: auto;
+}
 
 
 .rdt {
@@ -212,10 +216,4 @@ td.rdtYear:hover {
   width: 100%;
   font-size: 1.2em;
   margin-top: 37px;
-}
-
-  padding: 0px;
-  padding-right: 0px;
-  padding-left: 0px;
-
 }

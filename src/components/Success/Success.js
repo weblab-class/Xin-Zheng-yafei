@@ -57,16 +57,16 @@ class Success extends React.Component {
 
         <div className = {s.areaButton}>
           <button className = {s.button}> <a href="https://calendar.google.com/" target="_blank"> <i className="fa fa-google-plus-square"/></a>  </button>
-          <button className = {s.button} onClick={this.handleICS.bind(this)}><i className="fa fa-apple"/></button>
+          <button className = {s.button}> <a href={this.props.submitform.url.URL} target="_blank"> <i className="fa fa-file"/> </a></button>
           <button className = {s.button}onClick={this.handleBackCamera.bind(this)} ><i className="fa fa-camera"/></button>
-          <button className = {s.button}><i className="fa fa-file"/></button>
+          {/*<button className = {s.button}><i className="fa fa-file"/></button>*/}
         </div>
 
         <div className = {s.buttonText}>
           <p>Visit Google Calendar</p>
-          <p>Save to iCal</p>
+          <p>See the poster</p>
           <p>Add another</p>
-          <p>See poster</p>
+          {/*<p>See poster</p>*/}
         </div>
 
       </div>

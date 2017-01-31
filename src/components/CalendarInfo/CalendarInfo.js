@@ -412,6 +412,7 @@ class CalendarInfo extends React.Component {
         ]
       },
 
+      posterURL: this.props.url.URL,
       currentPanel: "Title",
       originOCR: [],
       allTitle: [],
@@ -627,7 +628,7 @@ class CalendarInfo extends React.Component {
   componentWillMount() {
     let wholeWord = "";
     const wordByLine = [];
-    for (let region of this.state.ocr.regions) {
+    for (let region of this.props.ocr.ocr.regions) {
       for (let line of region.lines) {
         let lineText = "";
         for (let word of line.words) {
@@ -640,9 +641,9 @@ class CalendarInfo extends React.Component {
     }
 
 
-    const lineByHeight = sortLines(this.state.ocr, lineHeight, "height");
-    const lineByAddress = sortLines(this.state.ocr, likeAddress, "address");
-    const lineByURL = allURL(this.state.ocr);
+    const lineByHeight = sortLines(this.props.ocr.ocr, lineHeight, "height");
+    const lineByAddress = sortLines(this.props.ocr.ocr, likeAddress, "address");
+    const lineByURL = allURL(this.props.ocr.ocr);
 
 
     this.setState(
@@ -696,7 +697,9 @@ class CalendarInfo extends React.Component {
     let areaContent = null;
     if (this.state.currentPanel !== "Time") {
       areaContent =
-        <div>
+        <div className = {s.wrapTime}>
+          <div className = {s.ulTime}>
+
           <SortableListSelected panel={this.state.currentPanel}
                               selected={this.state["selected" + this.state.currentPanel]}
                               onSortEnd={this.onSortEndSelected}
@@ -707,6 +710,7 @@ class CalendarInfo extends React.Component {
         <SortableListAll panel={this.state.currentPanel} all={this.state["all" + this.state.currentPanel]}
                          onSortEnd={this.onSortEndAll}
                          onClickAll={this.onClickAll} pressDelay={200}/>
+            </div>
       </div>
     }
     else {
@@ -748,7 +752,7 @@ class CalendarInfo extends React.Component {
     return (
       <div className={s.container}>
 
-        <div className={s.appWrap}>
+        <div className={s.appWrap} style={{height: window.innerHeight}}>
           <div className={s.areaSubmit}>
             <button className={s.buttonSignOut} onClick={this.handleSignOutClick.bind(this)}><i className="fa fa-power-off fa-2.5x"/></button>
             {headerTitle}
