@@ -631,7 +631,7 @@ class CalendarInfo extends React.Component {
   componentWillMount() {
     let wholeWord = "";
     const wordByLine = [];
-    for (let region of this.props.ocr.ocr.regions) {
+    for (let region of this.state.ocr.regions) {
       for (let line of region.lines) {
         let lineText = "";
         for (let word of line.words) {
@@ -644,9 +644,9 @@ class CalendarInfo extends React.Component {
     }
 
 
-    const lineByHeight = sortLines(this.props.ocr.ocr, lineHeight, "height");
-    const lineByAddress = sortLines(this.props.ocr.ocr, likeAddress, "address");
-    const lineByURL = allURL(this.props.ocr.ocr);
+    const lineByHeight = sortLines(this.state.ocr, lineHeight, "height");
+    const lineByAddress = sortLines(this.state.ocr, likeAddress, "address");
+    const lineByURL = allURL(this.state.ocr);
 
 
     this.setState(
@@ -694,7 +694,7 @@ class CalendarInfo extends React.Component {
     if (this.state.currentPanel !== "Time") {
       areaContent =
         <div>
-        <SortableListSelected panel={this.state.currentPanel}
+          <SortableListSelected panel={this.state.currentPanel}
                               selected={this.state["selected" + this.state.currentPanel]}
                               onSortEnd={this.onSortEndSelected}
                               onClickSelected={this.onClickSelected} pressDelay={200}/>
@@ -708,24 +708,32 @@ class CalendarInfo extends React.Component {
     }
     else {
       areaContent =
-        <div>
-          <p>Start Time</p>
-          <Datetime onChange={this.handleStartTimeChange} value={this.state.finalStartTime}/>
-          <p>End Time</p>
-          <Datetime onChange={this.handleEndTimeChange} value={this.state.finalEndTime} />
-        <SortableListSelectedTime panel={this.state.currentPanel}
-                              selected={this.state.selectedTime}
-                              onSortEnd={this.onSortEndSelected}
-                              onClickSelected={this.onClickSelected} pressDelay={200} />
-          <div className = {s.poolHeading}>
-            <h1>Tap to select</h1>
+        <div className = {s.wrapTime}>
+          <div className = {s.timeForm}>
+            <p>Start Time</p>
+            <Datetime onChange={this.handleStartTimeChange} value={this.state.finalStartTime}/>
+            <p>End Time</p>
+            <Datetime onChange={this.handleEndTimeChange} value={this.state.finalEndTime} />
           </div>
 
-        <SortableListAllTime panel={this.state.currentPanel} all={this.state.allTime}
-                         onSortEnd={this.onSortEndAll}
-                         onClickAll={this.onClickAll} />
+          <div className = {s.ulTime}>
+            <SortableListSelectedTime className = {s.timeSel}
+                                panel={this.state.currentPanel}
+                                selected={this.state.selectedTime}
+                                onSortEnd={this.onSortEndSelected}
+                                onClickSelected={this.onClickSelected} pressDelay={200} />
+
+            <div className = {s.poolHeading}>
+              <h1>Tap to select</h1>
+            </div>
+
+            <SortableListAllTime panel={this.state.currentPanel} all={this.state.allTime}
+                           onSortEnd={this.onSortEndAll}
+                           onClickAll={this.onClickAll} />
+          </div>
       </div>
     }
+
 
     let headerTitle = null;
     if (this.state.currentPanel === "Title")  headerTitle  =  <h1>Event</h1>
