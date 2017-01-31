@@ -412,6 +412,7 @@ class CalendarInfo extends React.Component {
         ]
       },
 
+      posterURL: this.props.url.URL,
       currentPanel: "Title",
       originOCR: [],
       allTitle: [],
