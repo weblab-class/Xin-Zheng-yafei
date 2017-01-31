@@ -21,7 +21,11 @@ class Camera extends React.Component {
       wait: false,
       uploadedFileCloudinaryUrl: ''
     };
-    this.handleImageUpload = this.handleImageUpload.bind(this)
+    this.handleImageUpload = this.handleImageUpload.bind(this);
+    // this.updateSigninStatus = this.updateSigninStatus(this);
+    // this.initClient = this.initClient(this);
+
+
   };
 
 
@@ -80,6 +84,12 @@ class Camera extends React.Component {
   }
 
 
+  handleSignOutClick(event) {
+    gapi.auth2.getAuthInstance().signOut(this.props.router.push('/'));
+  }
+
+
+
   render() {
 
     return (
@@ -88,7 +98,7 @@ class Camera extends React.Component {
 
         <div className={s.areaHeading}>
 
-          <button className={s.buttonSignOut}><i className="fa fa-sign-out  fa-2.5x"/></button>
+          <button className={s.buttonSignOut} onClick={this.handleSignOutClick.bind(this)}><i className="fa fa-power-off fa-2.5x"/></button>
           <h1>Camera</h1>
           <div className={s.empty}></div>
 

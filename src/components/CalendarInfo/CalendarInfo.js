@@ -479,14 +479,13 @@ class CalendarInfo extends React.Component {
 
   submit() {
     this.props.SubmitToRedux(this.state);
-    // this.props.router.push('/success');
 
     const eventName = this.state.selectedTitle.join(" ");
     const locationName = this.state.selectedPlace.join(" ");
     const description = this.state.wholeWord;
     const start = this.state.finalStartTime;
-    const end = this.state.finalEndTime;
-    const urlInPoster = this.state.selectedURL;
+    const end = this.state.finalEndTime? this.state.finalEndTime :  start;
+    const urlInPoster = this.state.selectedURL? this.state.selectedURL : "No URL in poster";
 
 
     var event = {
@@ -519,7 +518,10 @@ class CalendarInfo extends React.Component {
             'calendarId': 'primary',
             'resource': event
           });
-          request.execute(() => console.log("done"));
+          request.execute(() => {
+            console.log("done");
+            this.props.router.push('/success');
+          });
         }
       )
   }
@@ -582,13 +584,7 @@ class CalendarInfo extends React.Component {
           finalEndTime: tempSelect[0].end ? tempSelect[0].end.date() : null,
 
         })
-
-
       }
-
-
-
-
     }
   };
 
@@ -688,6 +684,13 @@ class CalendarInfo extends React.Component {
     )
   }
 
+
+  handleSignOutClick(event) {
+    gapi.auth2.getAuthInstance().signOut();
+    this.props.router.push('/');
+  }
+
+
   render() {
 
     let areaContent = null;
@@ -739,7 +742,7 @@ class CalendarInfo extends React.Component {
 
         <div className={s.appWrap}>
           <div className={s.areaSubmit}>
-            <button className={s.buttonSignOut} ><i className="fa fa-sign-out  fa-2.5x"/></button>
+            <button className={s.buttonSignOut} onClick={this.handleSignOutClick.bind(this)}><i className="fa fa-power-off fa-2.5x"/></button>
             {headerTitle}
             <button className={s.buttonSubmit} onClick={this.handleSubmit}><i className="fa fa-paper-plane  fa-2.5x"/></button>
           </div>

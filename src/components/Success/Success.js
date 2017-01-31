@@ -31,13 +31,23 @@ class Success extends React.Component {
 
   }
 
+  handleBackCamera(){
+    this.props.router.push('/camera');
+  }
+
+  handleSignOutClick(event) {
+    gapi.auth2.getAuthInstance().signOut();
+    this.props.router.push('/');
+  }
+
+
 
   render() {
     return (
       <div className={s.container}>
 
         <div className = {s.areaHeading}>
-          <button className={s.buttonSignOut}><i className="fa fa-sign-out  fa-2.5x"/></button>
+          <button className={s.buttonSignOut} onClick={this.handleSignOutClick.bind(this)}><i className="fa fa-power-off fa-2.5x"/></button>
         </div>
 
         <div className = {s.areaSuccessMsg}>
@@ -48,7 +58,7 @@ class Success extends React.Component {
         <div className = {s.areaButton}>
           <button className = {s.button}> <a href="https://calendar.google.com/" target="_blank"> <i className="fa fa-google-plus-square"/></a>  </button>
           <button className = {s.button} onClick={this.handleICS.bind(this)}><i className="fa fa-apple"/></button>
-          <button className = {s.button}><i className="fa fa-camera"/></button>
+          <button className = {s.button}onClick={this.handleBackCamera.bind(this)} ><i className="fa fa-camera"/></button>
           <button className = {s.button}><i className="fa fa-file"/></button>
         </div>
 
